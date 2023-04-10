@@ -2,11 +2,12 @@ import { Component, Input } from '@angular/core';
 import { Character, CharacterStatus } from '../../model/character.model';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/state/app/app.state';
-import { DeleteCharacter } from 'src/app/state/characters/characters.actions';
+import { DeleteCharacter, UpdateCharacter } from 'src/app/state/characters/characters.actions';
 import { DialogService } from 'primeng/dynamicdialog';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confrim-dialog/confirm-dialog.component';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { skipWhile } from 'rxjs';
+import { CharacterFormDlgComponent } from '../character-form-dlg/character-form-dlg.component';
 
 @UntilDestroy()
 @Component({
@@ -25,7 +26,6 @@ export class CharacterCardComponent {
 
   async deleteCharacter(): Promise<void> {
     const dialog = this.dlgService.open(ConfirmDialogComponent, {
-      width: '20%',
       data: {
         body: 'Are you sure you want to delete this character?'
       }
@@ -36,6 +36,14 @@ export class CharacterCardComponent {
   }
 
   openCharacterDialog(): void {
+    const dialog = this.dlgService.open(CharacterFormDlgComponent, {
+      data: {
+        character: this.character
+      }
+    });
+    dialog.onClose.pipe(skipWhile(data => !data), untilDestroyed(this)).subscribe(async (data: Character) => {
+      this.store.dispatch(new UpdateCharacter(data));
+    });
   }
 
 }

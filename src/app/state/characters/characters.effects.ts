@@ -26,8 +26,8 @@ export class CharactersEffects {
             // There would be an API call here
             return character;
         }),
-        switchMap((category: Character) => {
-            return of(new UpdateCharacterSuccess(category));
+        switchMap((character: Character) => {
+            return of(new UpdateCharacterSuccess(character));
         })
     ));
 

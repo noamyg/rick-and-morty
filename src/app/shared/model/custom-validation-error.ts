@@ -4,14 +4,8 @@ export interface CustomValidationError {
 }
 
 export abstract class ValidationErrorMessage {
-  static readonly UNKNOWN = 'validationErrors.invalidInput';
-  /*
-   * Would be improved as a function to display exact message
-   * I.E. `minimum length of ${error.requiredLength}`
-   */
+  static readonly UNKNOWN = 'Invalid input';
   static readonly Defaults: CustomValidationError[] = [
-    { key: 'required', error: 'validationErrors.thisFieldIsRequired' },
-    { key: 'minlength', error: 'validationErrors.thisFieldHasMinimumLength' },
-    { key: 'maxlength', error: 'validationErrors.thisFieldHasMaximumLength' }
+    { key: 'required', error: 'This field is required' }
   ];
 }

@@ -27,7 +27,8 @@ export interface Character {
 
 export enum CharacterStatus {
     ALIVE = 'Alive',
-    DEAD = 'Dead'
+    DEAD = 'Dead',
+    UNKNOWN = 'unknown'
 }
 
 export interface CharacterOrigin {

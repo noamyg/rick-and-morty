@@ -2,9 +2,9 @@
 export class SelectOption {
   private _name!: string;
   private _id: any;
-  private _items?: SelectOption[];
+  private _items!: SelectOption[];
 
-  constructor(name: string, id: string | number, items?: SelectOption[]) {
+  constructor(name: string, id: any, items: SelectOption[]) {
     this.name = name;
     this.id = id;
     this.items = items;
@@ -18,19 +18,19 @@ export class SelectOption {
     this._name = name;
   }
 
-  get id(): string | number {
+  get id(): any {
     return this._id;
   }
 
-  set id(id: string | number) {
+  set id(id: any) {
     this._id = id;
   }
 
-  get items(): SelectOption[] | undefined {
+  get items(): SelectOption[] {
     return this._items;
   }
 
-  set items(items: SelectOption[] | undefined) {
+  set items(items: SelectOption[]) {
     this._items = items;
   }
 
@@ -38,7 +38,7 @@ export class SelectOption {
 
 export abstract class SelectOptionsFactory {
   static createFromArray(
-    source: [],
+    source: any[],
     nameKey: string = 'name',
     idKey: string = 'id',
     itemsKey: string = 'items'): SelectOption[] {
