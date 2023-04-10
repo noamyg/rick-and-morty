@@ -1,0 +1,19 @@
+<div class="body">
+  {{ body }}
+</div>
+<div class="button-row">
+  <p-button
+    pRipple
+    [label]="confirmButtonLabel"
+    (click)="this.dlgRef.close(true)"
+    type="button"
+    styleClass="p-button-success">
+  </p-button>
+  <p-button
+    pRipple
+    [label]="cancelButtonLabel"
+    (click)="this.dlgRef.close()"
+    type="button"
+    styleClass="p-button-danger">
+  </p-button>
+</div>

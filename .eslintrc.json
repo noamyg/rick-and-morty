@@ -23,7 +23,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "rick-and-morty",
+            "prefix": "ram",
             "style": "kebab-case"
           }
         ]

@@ -1,0 +1,22 @@
+@use 'variables';
+
+.label-wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  .control-label {
+    font-size: map-get(variables.$font-sizes, small);
+    color: map-get(variables.$colors, dark-grey);
+  }
+}
+
+:host ::ng-deep p-dropdown {
+  .p-dropdown {
+    margin: 0.25rem 0;
+    width: 100%;
+  }
+
+  .p-placeholder {
+    opacity: 0.7;
+  }
+}

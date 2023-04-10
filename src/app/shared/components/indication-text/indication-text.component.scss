@@ -1,0 +1,24 @@
+@use 'variables';
+
+div {
+  &.success {
+    color: map-get(variables.$colors, success) !important;
+  }
+
+  &.warning {
+    color: map-get(variables.$colors, warning) !important;
+  }
+
+  &.danger {
+    color: map-get(variables.$colors, danger) !important;
+  }
+
+  &.info {
+    color: map-get(variables.$colors, info) !important;
+  }
+
+  .icon {
+    height: 1rem;
+    padding-left: 0.25rem;
+  }
+}

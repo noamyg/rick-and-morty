@@ -1,0 +1,5 @@
+@use 'node_modules/animatewithsass/animate';
+
+img {
+  @include animate.pulse($count: infinite);
+}

@@ -1,0 +1,49 @@
+@use 'variables';
+@use 'mixins';
+@use 'functions';
+
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: variables.$header-height;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  background: linear-gradient(functions.get-shadow(.05), functions.get-shadow(.1));
+  font-weight: 600;
+  @include mixins.box-shadow(.2);
+  @include mixins.user-select-none;
+
+  .push-start {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    .logo {
+      height: 45px;
+    }
+  }
+
+  .push-end {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    > * {
+      padding: 0.25rem;
+    }
+
+    .menu-wrapper {
+      display: flex;
+      align-items: center;
+
+      img {
+        height: 40px;
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<div class="label-wrapper">
+  <label
+    *ngIf="label"
+    class="control-label"
+    [for]="id"
+    [class.with-required-indicator]="required || FormUtil.isControlRequired(control)">
+    {{ label}}
+  </label>
+  <span class="label-icon" *ngIf="labelIcon" (click)="labelIconClick.emit()">
+    <img [src]="labelIcon" />
+  </span>
+</div>
+<input
+  pInputText
+  [name]="id"
+  [id]="id"
+  [type]="type"
+  [placeholder]="placeholder"
+  [required]="FormUtil.isControlRequired(control)"
+  [autocomplete]="autocomplete"
+  [formControl]="control" />
+<ng-content></ng-content>
+<ram-indication-text
+  indication="danger"
+  [regular]="FormUtil.getControlErrors(control, customValidationErrors)"
+  *ngIf="control?.invalid && control?.touched">
+</ram-indication-text>
