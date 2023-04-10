@@ -1,5 +1,4 @@
 @charset 'UTF-8';
-
 @use 'variables';
 @use 'mixins';
 
@@ -10,7 +9,7 @@
 
 body {
   color: map-get(variables.$colors, main-dark);
-  background-color: map-get(variables.$colors, main-bright);
+  background-color: map-get(variables.$colors, main-dark);
   font-family: Montserrat, sans-serif !important;
   margin: 0;
 }

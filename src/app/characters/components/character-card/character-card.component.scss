@@ -27,7 +27,7 @@
   left: 0;
   right: 0;
   padding: 1rem;
-  background: functions.get-shadow(.7);
+  background: functions.get-shadow(.5);
   color: map-get(variables.$colors, main-bright);
 
   .top-row {
@@ -45,7 +45,6 @@
 
       i {
         padding: .25rem;
-        cursor: pointer;
       }
     }
   }

@@ -72,7 +72,6 @@
     "nx": "15.9.2",
     "prettier": "^2.6.2",
     "stylelint": "^15.4.0",
-    "stylelint-config-prettier-scss": "^0.0.1",
     "stylelint-config-standard": "^32.0.0",
     "stylelint-config-standard-scss": "^8.0.0",
     "stylelint-scss": "^4.6.0",

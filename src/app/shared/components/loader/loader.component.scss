@@ -17,6 +17,7 @@
     background-color: map-get(variables.$colors, main-white);
     border-radius: 10px;
     padding: 3rem;
+    
     @include animate.fadeIn;
     @include mixins.user-select-none;
 

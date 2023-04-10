@@ -13,7 +13,7 @@ import { selectCharacters } from './characters.selector';
 export class CharactersEffects {
   getCharacters$ = createEffect(() => this.actions.pipe(
     ofType<fromCharacters.GetCharacters>(fromCharacters.ECharactersActions.GetCharacters),
-    concatMap(() => of('dummy loader').pipe(delay(1500))),
+    concatMap(() => of('dummy loader').pipe(delay(2000))),
     switchMap(() => this.charactersService.getCharacters()),
     map((data: Character[]) => new fromCharacters.GetCharactersSuccess(data))
   ));

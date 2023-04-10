@@ -1,8 +1,7 @@
 {
     "extends": [
       "stylelint-scss",
-      "stylelint-config-standard-scss",
-      "stylelint-config-prettier-scss"
+      "stylelint-config-standard-scss"
     ],
     "rules": {
       "block-closing-brace-empty-line-before": "never",

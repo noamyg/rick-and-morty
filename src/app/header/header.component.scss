@@ -11,8 +11,11 @@
   display: flex;
   align-items: center;
   padding: 0 2rem;
-  background: linear-gradient(functions.get-shadow(.05), functions.get-shadow(.1));
-  font-weight: 600;
+  background: linear-gradient(to bottom, map-get(variables.$colors , main-dark), functions.get-opac-color(map-get(variables.$colors , main-dark), .2), functions.get-opac-color(map-get(variables.$colors , main-dark), 1)), url(~src/assets/images/header.png) no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  
   @include mixins.box-shadow(.2);
   @include mixins.user-select-none;
 
@@ -23,7 +26,7 @@
     justify-content: flex-start;
 
     .logo {
-      height: 45px;
+      height: 90px;
     }
   }
 
@@ -32,18 +35,10 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    color: map-get(variables.$colors , main-brand);
 
-    > * {
+    .title {
       padding: 0.25rem;
-    }
-
-    .menu-wrapper {
-      display: flex;
-      align-items: center;
-
-      img {
-        height: 40px;
-      }
     }
   }
 }
