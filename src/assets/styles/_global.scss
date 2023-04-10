@@ -5,13 +5,14 @@
 
 
 @font-face {
-  font-family: RustyHooksRegular;
-  src: url(../fonts/RustyHooksRegular-nROER.ttf)  format('ttf');
+  font-family: Montserrat;
+  src: url(../fonts/Montserrat-Bold.ttf) format("truetype");
 }
 
 body {
   color: map-get(variables.$colors, main-dark);
   background-color: map-get(variables.$colors, main-bright);
+  font-family: Montserrat, sans-serif !important;
   margin: 0;
 }
 

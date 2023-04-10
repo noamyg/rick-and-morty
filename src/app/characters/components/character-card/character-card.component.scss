@@ -41,6 +41,8 @@
         }
 
         .buttons {
+            display: inline-flex;
+            
             i {
                 padding: .25rem;
                 cursor: pointer;
