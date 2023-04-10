@@ -9,6 +9,7 @@ import { Store, select } from '@ngrx/store';
 import { AppState } from '../app/app.state';
 import { selectCharacters, selectFavoriteCharacterIds } from './characters.selector';
 import { LocalStorageKeys } from 'src/app/shared/utils/storage.util';
+import { cloneDeep } from 'lodash';
 
 @Injectable()
 export class CharactersEffects {
@@ -67,7 +68,7 @@ export class CharactersEffects {
       )
     ),
     map(([characterId, favoriteCharacterIds]) => {
-      const updatedFavorites = [ ...favoriteCharacterIds || [], characterId ];
+      const updatedFavorites = [ ...cloneDeep(favoriteCharacterIds) || [], characterId ];
       localStorage.setItem(LocalStorageKeys.FAVORITE_CHARACTERS, updatedFavorites.join(','));
       return characterId;
     }),
@@ -83,9 +84,9 @@ export class CharactersEffects {
       )
     ),
     map(([characterId, favoriteCharacterIds]) => {
-      const ind = favoriteCharacterIds?.findIndex(id => id === characterId);
-      const updatedFavorites = [ ...favoriteCharacterIds || [] ];
-      if (ind) {
+      const ind = favoriteCharacterIds?.findIndex(id => id === characterId) ?? -1;
+      const updatedFavorites = cloneDeep(favoriteCharacterIds || []);
+      if (ind !== -1) {
         updatedFavorites.splice(ind, 1);
       }
       localStorage.setItem(LocalStorageKeys.FAVORITE_CHARACTERS, updatedFavorites.join(','));
