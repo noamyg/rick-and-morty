@@ -52,9 +52,9 @@ export class CharacterCardComponent {
 
   toggleFavorite(): void {
     if (this.isFavorite) {
-      this.store.dispatch(new RemoveFromFavorites(this.character));
+      this.store.dispatch(new RemoveFromFavorites(this.character.id));
     } else {
-      this.store.dispatch(new AddToFavorites(this.character));
+      this.store.dispatch(new AddToFavorites(this.character.id));
     }
   }
 

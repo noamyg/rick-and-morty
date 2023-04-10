@@ -3,7 +3,7 @@ import { AppState } from '../state/app/app.state';
 import { Store, select } from '@ngrx/store';
 import { Observable, map, skipWhile } from 'rxjs';
 import { Character } from './model/character.model';
-import { selectCharacters, selectFavoriteCharacters } from '../state/characters/characters.selector';
+import { selectCharacters, selectFavoriteCharacterIds } from '../state/characters/characters.selector';
 import { skipInitial } from '../shared/utils/rxjs.util';
 import { CharacterFormDlgComponent } from './components/character-form-dlg/character-form-dlg.component';
 import { DialogService } from 'primeng/dynamicdialog';
@@ -20,8 +20,7 @@ import { DialogUtil } from '../shared/utils/dialog.util';
 })
 export class CharactersPage {
   characters$: Observable<Character[] | undefined> = this.store.pipe(select(selectCharacters), skipInitial());
-  favoriteCharacterIds$: Observable<number[] | undefined> =
-    this.store.pipe(select(selectFavoriteCharacters), skipInitial(), map(chars => chars?.map(c => c.id)));
+  favoriteCharacterIds$: Observable<number[] | undefined> = this.store.pipe(select(selectFavoriteCharacterIds), skipInitial());
   showOnlyFavorites: boolean = false;
 
   constructor(

@@ -7,7 +7,7 @@ import * as fromCharacters from './characters.actions';
 import { Character } from 'src/app/characters/model/character.model';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../app/app.state';
-import { selectCharacters, selectFavoriteCharacters } from './characters.selector';
+import { selectCharacters, selectFavoriteCharacterIds } from './characters.selector';
 import { LocalStorageKeys } from 'src/app/shared/utils/storage.util';
 
 @Injectable()
@@ -63,14 +63,13 @@ export class CharactersEffects {
     map(action => action.payload),
     withLatestFrom(
       this.store.pipe(
-        select(selectFavoriteCharacters),
-        map(characters => characters ? characters.map(c => c.id) : [])
+        select(selectFavoriteCharacterIds)
       )
     ),
-    map(([character, favoriteCharacterIds]) => {
-      const updatedFavorites = [ ...favoriteCharacterIds, character.id ];
+    map(([characterId, favoriteCharacterIds]) => {
+      const updatedFavorites = [ ...favoriteCharacterIds || [], characterId ];
       localStorage.setItem(LocalStorageKeys.FAVORITE_CHARACTERS, updatedFavorites.join(','));
-      return character;
+      return characterId;
     }),
     map((character) => new fromCharacters.AddToFavoritesSuccess(character))
   ));
@@ -80,16 +79,17 @@ export class CharactersEffects {
     map(action => action.payload),
     withLatestFrom(
       this.store.pipe(
-        select(selectFavoriteCharacters),
-        map(characters => characters ? characters.map(c => c.id) : [])
+        select(selectFavoriteCharacterIds)
       )
     ),
-    map(([character, favoriteCharacterIds]) => {
-      const ind = favoriteCharacterIds.findIndex(id => id === character.id);
-      const updatedFavorites = [ ...favoriteCharacterIds ];
-      updatedFavorites.splice(ind, 1);
+    map(([characterId, favoriteCharacterIds]) => {
+      const ind = favoriteCharacterIds?.findIndex(id => id === characterId);
+      const updatedFavorites = [ ...favoriteCharacterIds || [] ];
+      if (ind) {
+        updatedFavorites.splice(ind, 1);
+      }
       localStorage.setItem(LocalStorageKeys.FAVORITE_CHARACTERS, updatedFavorites.join(','));
-      return character;
+      return characterId;
     }),
     map((character) => new fromCharacters.RemoveFromFavoritesSuccess(character))
   ));

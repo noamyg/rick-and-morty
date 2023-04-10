@@ -14,7 +14,7 @@ export const selectCharactersCallState = createSelector(
   (state: CharactersState) => state.charactersCallState
 );
 
-export const selectFavoriteCharacters = createSelector(
+export const selectFavoriteCharacterIds = createSelector(
   charactersSelect,
-  (state: CharactersState) => state.favoriteCharacters
+  (state: CharactersState) => state.favoriteCharacterIds
 );

@@ -8,7 +8,7 @@ import { cloneDeep } from 'lodash';
 
 export function charactersReducers(state = initialCharactersState, action: CharactersActions): CharactersState {
   let stateCharacters = [];
-  let stateFavoriteCharacters = [];
+  let stateFavoriteCharacterIds = [];
   switch (action.type) {
     case ECharactersActions.GetCharacters:
       return {
@@ -49,21 +49,21 @@ export function charactersReducers(state = initialCharactersState, action: Chara
         characters: stateCharacters
       };
     case ECharactersActions.AddToFavoritesSuccess:
-      stateFavoriteCharacters = cloneDeep(state.favoriteCharacters) || [];
-      stateFavoriteCharacters.push(action.payload);
+      stateFavoriteCharacterIds = cloneDeep(state.favoriteCharacterIds) || [];
+      stateFavoriteCharacterIds.push(action.payload);
       return {
         ...state,
-        favoriteCharacters: stateFavoriteCharacters
+        favoriteCharacterIds: stateFavoriteCharacterIds
       };
     case ECharactersActions.RemoveFromFavoritesSuccess:
-      stateFavoriteCharacters = cloneDeep(state.favoriteCharacters) || [];
-      var ind = stateFavoriteCharacters.findIndex(fc => fc.id === action.payload.id);
+      stateFavoriteCharacterIds = cloneDeep(state.favoriteCharacterIds) || [];
+      var ind = stateFavoriteCharacterIds.findIndex(fc => fc === action.payload);
       if (ind > -1) {
-        stateFavoriteCharacters.splice(ind, 1);
+        stateFavoriteCharacterIds.splice(ind, 1);
       }
       return {
         ...state,
-        favoriteCharacters: stateFavoriteCharacters
+        favoriteCharacterIds: stateFavoriteCharacterIds
       };
     default:
       return state;

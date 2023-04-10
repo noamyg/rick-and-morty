@@ -64,22 +64,22 @@ export class DeleteCharacterSuccess implements Action {
 
 export class AddToFavorites implements Action {
   public readonly type = ECharactersActions.AddToFavorites;
-  constructor(public payload: Character) {}
+  constructor(public payload: number) {}
 }
 
 export class AddToFavoritesSuccess implements Action {
   public readonly type = ECharactersActions.AddToFavoritesSuccess;
-  constructor(public payload: Character) {}
+  constructor(public payload: number) {}
 }
 
 export class RemoveFromFavorites implements Action {
   public readonly type = ECharactersActions.RemoveFromFavorites;
-  constructor(public payload: Character) {}
+  constructor(public payload: number) {}
 }
 
 export class RemoveFromFavoritesSuccess implements Action {
   public readonly type = ECharactersActions.RemoveFromFavoritesSuccess;
-  constructor(public payload: Character) {}
+  constructor(public payload: number) {}
 }
 
 export type CharactersActions =
