@@ -1,10 +1,13 @@
 import { Injectable } from "@angular/core";
 import {  ofType, Actions, createEffect } from "@ngrx/effects"
 import { concatMap, delay, map, switchMap } from "rxjs/operators"
-import { of } from "rxjs";
+import { of, withLatestFrom } from "rxjs";
 import { CharactersApiService } from "src/app/services/characters-api.service";
 import { GetCharacters, GetCharactersSuccess, UpdateCharacter, AddCharacter, AddCharacterSuccess, DeleteCharacter, ECharactersActions, UpdateCharacterSuccess, DeleteCharacterSuccess } from "./characters.actions";
 import { Character } from "src/app/characters/model/character.model";
+import { Store, select } from "@ngrx/store";
+import { AppState } from "../app/app.state";
+import { selectCharacters } from "./characters.selector";
 
 @Injectable()
 export class CharactersEffects {
@@ -14,8 +17,8 @@ export class CharactersEffects {
         switchMap(() => {
             return this.charactersService.getCharacters();
         }),
-        switchMap((data: Character[]) => {
-            return of(new GetCharactersSuccess(data));
+        map((data: Character[]) => {
+            return new GetCharactersSuccess(data);
         })
     ));
 
@@ -26,8 +29,8 @@ export class CharactersEffects {
             // There would be an API call here
             return character;
         }),
-        switchMap((character: Character) => {
-            return of(new UpdateCharacterSuccess(character));
+        map((character: Character) => {
+            return new UpdateCharacterSuccess(character);
         })
     ));
 
@@ -35,11 +38,20 @@ export class CharactersEffects {
         ofType<AddCharacter>(ECharactersActions.AddCharacter),
         map(action => action.payload),
         switchMap(async (character) => {
-            // There would be an API call here
+            // There would be an API call here. Instead - an ID will be generated based on the max current id
             return character;
         }),
-        switchMap((character: Character) => {
-            return of(new AddCharacterSuccess(character));
+        withLatestFrom(
+            this.store.pipe(
+                select(selectCharacters),
+                map(characters => characters ? Math.max(...characters.map(c => c.id)) : 1)
+            )
+        ),
+        map(([character, maxId]) => {
+            return new AddCharacterSuccess({
+                ...character,
+                id: ++maxId
+            });
         })
     ));
 
@@ -50,12 +62,13 @@ export class CharactersEffects {
             // There would be an API call here
             return id;
         }),
-        switchMap((id: number) => {
-            return of(new DeleteCharacterSuccess(id));
+        map((id: number) => {
+            return new DeleteCharacterSuccess(id);
         })
     ));
 
     constructor(
+        private store: Store<AppState>,
         private actions: Actions,
         private charactersService: CharactersApiService
     ) {}    
