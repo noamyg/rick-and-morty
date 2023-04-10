@@ -26,7 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     SharedModule,
     HeaderModule,
-    RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
+    RouterModule.forRoot(appRoutes, { useHash: true, initialNavigation: 'enabledBlocking' }),
     StoreModule.forRoot(appReducers),
     EffectsModule.forRoot([CharactersEffects]),
     StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
