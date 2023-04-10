@@ -10,4 +10,4 @@
 <div class="field">
     <ram-dropdown [control]="$any(formGroup.get('status'))" [options]="statusOptions" label="Species"></ram-dropdown>
 </div>
-<p-button label="Save" icon="pi pi-check" styleClass="p-button" (click)="save()"></p-button>
+<p-button [disabled]="formGroup.pristine || !formGroup.valid" label="Save" icon="pi pi-check" styleClass="p-button" (click)="save()"></p-button>
