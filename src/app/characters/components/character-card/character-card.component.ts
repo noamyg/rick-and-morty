@@ -37,6 +37,7 @@ export class CharacterCardComponent {
 
   openCharacterDialog(): void {
     const dialog = this.dlgService.open(CharacterFormDlgComponent, {
+      width: "50vw",
       data: {
         character: this.character
       }

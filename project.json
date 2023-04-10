@@ -18,6 +18,8 @@
         "assets": ["./src/favicon.ico", "./src/assets"],
         "styles": [
           "src/assets/styles/_global.scss",
+          "src/assets/styles/_overrides/_browser.scss",
+          "src/assets/styles/_overrides/_primeng.scss",
           "node_modules/primeflex/primeflex.css",
           "node_modules/primeicons/primeicons.css",
           "node_modules/primeng/resources/themes/saga-blue/theme.css",

@@ -5,7 +5,7 @@ export enum ECharactersActions {
     GetCharacters = '[Characters] Get Characters',
     GetCharactersSuccess = '[Characters] Get Characters Success',
     GetCharactersFailure = '[Characters] Get Characters Failure',
-    AddCharacter = '[Characters] Update Character',
+    AddCharacter = '[Characters] Add Character',
     AddCharacterSuccess = '[Characters] Add Character Success',
     UpdateCharacter = '[Characters] Update Character',
     UpdateCharacterSuccess = '[Characters] Update Character Success',

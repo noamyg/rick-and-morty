@@ -1,5 +1,13 @@
-<ram-input [control]="$any(formGroup.get('image'))" label="Image URL"></ram-input>
-<ram-input [control]="$any(formGroup.get('name'))" label="Name"></ram-input>
-<ram-input [control]="$any(formGroup.get('species'))" label="Species"></ram-input>
-<ram-dropdown [control]="$any(formGroup.get('status'))" [options]="statusOptions" label="Species"></ram-dropdown>
+<div class="field">
+    <ram-input [control]="$any(formGroup.get('image'))" label="Image URL"></ram-input>
+</div>
+<div class="field">
+    <ram-input [control]="$any(formGroup.get('name'))" label="Name"></ram-input>
+</div>
+<div class="field">
+    <ram-input [control]="$any(formGroup.get('species'))" label="Species"></ram-input>
+</div>
+<div class="field">
+    <ram-dropdown [control]="$any(formGroup.get('status'))" [options]="statusOptions" label="Species"></ram-dropdown>
+</div>
 <p-button label="Save" icon="pi pi-check" styleClass="p-button" (click)="save()"></p-button>

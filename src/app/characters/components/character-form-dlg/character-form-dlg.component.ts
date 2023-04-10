@@ -47,6 +47,16 @@ export class CharacterFormDlgComponent implements OnInit {
       species: '',
       status: CharacterStatus.ALIVE
     })
+
+    /*
+     * By seperating the form creation from the validation assignment,
+     * we can leverage the typed form in order to ensure that the model of the form 
+     * is identical to the model of the requst
+     */
+    
+    Object.keys(this.formGroup.controls).forEach(key => {
+      this.formGroup.get(key)?.setValidators(Validators.required);
+    });
   }
 
   patchForm(): void {
