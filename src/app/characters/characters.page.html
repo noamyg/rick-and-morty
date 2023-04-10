@@ -1,8 +1,11 @@
 <div class="cards-wrapper">
-    <div class="card" *ngFor="let character of characters$ | async">
-        <ram-character-card  [character]="character"></ram-character-card>
-    </div>
+  <div class="card" *ngFor="let character of characters$ | async">
+    <ram-character-card [character]="character"></ram-character-card>
+  </div>
 </div>
 <div class="floating-buttons-wrapper">
-    <p-button icon="pi pi-plus" styleClass="p-button-rounded p-button-success" (click)="openCharacterFormDialog()"></p-button>
+  <p-button
+    icon="pi pi-plus"
+    styleClass="p-button-rounded p-button-success"
+    (click)="openCharacterFormDialog()"></p-button>
 </div>

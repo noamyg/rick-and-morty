@@ -32,6 +32,6 @@ export class AppComponent {
     this.store.dispatch(new GetCharacters());
     this.store.pipe(select(selectCharacters), skipInitial(), first()).subscribe(() => {
       this.router.navigate(['characters']);
-    })
+    });
   }
 }

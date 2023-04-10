@@ -1,9 +1,7 @@
 <ram-header></ram-header>
-<ram-loader
-  *ngIf="(charactersCallState$ | async) !== ProcessState.COMPLETED">
-</ram-loader>
+<ram-loader *ngIf="(charactersCallState$ | async) !== ProcessState.COMPLETED"> </ram-loader>
 <div class="content" role="main">
-    <div class="router-outlet">
-        <router-outlet></router-outlet>
-    </div>
+  <div class="router-outlet">
+    <router-outlet></router-outlet>
+  </div>
 </div>

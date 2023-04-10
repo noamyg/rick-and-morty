@@ -1,75 +1,65 @@
-import { Injectable } from "@angular/core";
-import {  ofType, Actions, createEffect } from "@ngrx/effects"
-import { concatMap, delay, map, switchMap } from "rxjs/operators"
-import { of, withLatestFrom } from "rxjs";
-import { CharactersApiService } from "src/app/services/characters-api.service";
-import { GetCharacters, GetCharactersSuccess, UpdateCharacter, AddCharacter, AddCharacterSuccess, DeleteCharacter, ECharactersActions, UpdateCharacterSuccess, DeleteCharacterSuccess } from "./characters.actions";
-import { Character } from "src/app/characters/model/character.model";
-import { Store, select } from "@ngrx/store";
-import { AppState } from "../app/app.state";
-import { selectCharacters } from "./characters.selector";
+import { Injectable } from '@angular/core';
+import {  ofType, Actions, createEffect } from '@ngrx/effects';
+import { concatMap, delay, map, switchMap } from 'rxjs/operators';
+import { of, withLatestFrom } from 'rxjs';
+import { CharactersApiService } from 'src/app/services/characters-api.service';
+import * as fromCharacters from './characters.actions';
+import { Character } from 'src/app/characters/model/character.model';
+import { Store, select } from '@ngrx/store';
+import { AppState } from '../app/app.state';
+import { selectCharacters } from './characters.selector';
 
 @Injectable()
 export class CharactersEffects {
-    getCharacters$ = createEffect(() => this.actions.pipe(
-        ofType<GetCharacters>(ECharactersActions.GetCharacters),
-        concatMap(() => of('dummy loader').pipe(delay(1500))),
-        switchMap(() => {
-            return this.charactersService.getCharacters();
-        }),
-        map((data: Character[]) => {
-            return new GetCharactersSuccess(data);
-        })
-    ));
+  getCharacters$ = createEffect(() => this.actions.pipe(
+    ofType<fromCharacters.GetCharacters>(fromCharacters.ECharactersActions.GetCharacters),
+    concatMap(() => of('dummy loader').pipe(delay(1500))),
+    switchMap(() => this.charactersService.getCharacters()),
+    map((data: Character[]) => new fromCharacters.GetCharactersSuccess(data))
+  ));
 
-    updateCharacter$ = createEffect(() => this.actions.pipe(
-        ofType<UpdateCharacter>(ECharactersActions.UpdateCharacter),
-        map(action => action.payload),
-        switchMap(async (character) => {
-            // There would be an API call here
-            return character;
-        }),
-        map((character: Character) => {
-            return new UpdateCharacterSuccess(character);
-        })
-    ));
+  updateCharacter$ = createEffect(() => this.actions.pipe(
+    ofType<fromCharacters.UpdateCharacter>(fromCharacters.ECharactersActions.UpdateCharacter),
+    map(action => action.payload),
+    switchMap(async (character) =>
+    // There would be an API call here
+      character
+    ),
+    map((character: Character) => new fromCharacters.UpdateCharacterSuccess(character))
+  ));
 
-    addCharacter$ = createEffect(() => this.actions.pipe(
-        ofType<AddCharacter>(ECharactersActions.AddCharacter),
-        map(action => action.payload),
-        switchMap(async (character) => {
-            // There would be an API call here. Instead - an ID will be generated based on the max current id
-            return character;
-        }),
-        withLatestFrom(
-            this.store.pipe(
-                select(selectCharacters),
-                map(characters => characters ? Math.max(...characters.map(c => c.id)) : 1)
-            )
-        ),
-        map(([character, maxId]) => {
-            return new AddCharacterSuccess({
-                ...character,
-                id: ++maxId
-            });
-        })
-    ));
+  addCharacter$ = createEffect(() => this.actions.pipe(
+    ofType<fromCharacters.AddCharacter>(fromCharacters.ECharactersActions.AddCharacter),
+    map(action => action.payload),
+    switchMap(async (character) =>
+    // There would be an API call here. Instead - an ID will be generated based on the max current id
+      character
+    ),
+    withLatestFrom(
+      this.store.pipe(
+        select(selectCharacters),
+        map(characters => characters ? Math.max(...characters.map(c => c.id)) : 1)
+      )
+    ),
+    map(([character, maxId]) => new fromCharacters.AddCharacterSuccess({
+      ...character,
+      id: ++maxId
+    }))
+  ));
 
-    deleteCharacter$ = createEffect(() => this.actions.pipe(
-        ofType<DeleteCharacter>(ECharactersActions.DeleteCharacter),
-        map(action => action.payload),
-        switchMap(async (id) => {
-            // There would be an API call here
-            return id;
-        }),
-        map((id: number) => {
-            return new DeleteCharacterSuccess(id);
-        })
-    ));
+  deleteCharacter$ = createEffect(() => this.actions.pipe(
+    ofType<fromCharacters.DeleteCharacter>(fromCharacters.ECharactersActions.DeleteCharacter),
+    map(action => action.payload),
+    switchMap(async (id) =>
+    // There would be an API call here
+      id
+    ),
+    map((id: number) => new fromCharacters.DeleteCharacterSuccess(id))
+  ));
 
-    constructor(
-        private store: Store<AppState>,
-        private actions: Actions,
-        private charactersService: CharactersApiService
-    ) {}    
+  constructor(
+    private store: Store<AppState>,
+    private actions: Actions,
+    private charactersService: CharactersApiService
+  ) {}
 }

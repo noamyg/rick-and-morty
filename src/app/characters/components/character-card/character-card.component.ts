@@ -18,8 +18,8 @@ import { DialogUtil } from 'src/app/shared/utils/dialog.util';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CharacterCardComponent {
-  CharacterStatus = CharacterStatus;
   @Input() character!: Character;
+  CharacterStatus = CharacterStatus;
 
   constructor(
     private dlgService: DialogService,

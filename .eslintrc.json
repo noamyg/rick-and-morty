@@ -1,16 +1,42 @@
 {
   "root": true,
-  "ignorePatterns": ["!**/*"],
-  "plugins": ["@nrwl/nx"],
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "env": {
+      "es6": true
+  },
+  "ignorePatterns": [
+    "projects/**/*"
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "@angular-eslint"
+  ],
   "overrides": [
     {
-      "files": ["*.ts"],
+      "files": [
+        "*.ts",
+        "*.js"
+      ],
+      "parserOptions": {
+        "project": [
+          "tsconfig.*?.json",
+          "e2e/tsconfig.json"
+        ],
+        "createDefaultProgram": true
+      },
       "extends": [
-        "plugin:@nrwl/nx/typescript",
-        "plugin:@nrwl/nx/angular",
-        "plugin:@angular-eslint/template/process-inline-templates"
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/ng-cli-compat",
+        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "airbnb-typescript/base"
       ],
       "rules": {
+        "import/no-extraneous-dependencies": ["error", {
+          "devDependencies": ["**/*.test.ts", "**/*.test.tsx", "**/*.js"]
+        }],
         "@angular-eslint/component-class-suffix": [
           "error",
           {
@@ -20,28 +46,73 @@
             ]
           }
         ],
-        "@angular-eslint/directive-selector": [
+        "@angular-eslint/component-selector": "off",
+        "@angular-eslint/directive-class-suffix": [
           "error",
           {
-            "type": "attribute",
-            "prefix": "rickAndMorty",
-            "style": "camelCase"
+            "suffixes": [
+              "Validator",
+              "Directive"
+            ]
           }
         ],
-        "@angular-eslint/component-selector": [
+        "@angular-eslint/use-component-view-encapsulation": "error",
+        "@typescript-eslint/no-unused-vars": [
           "error",
           {
-            "type": "element",
-            "prefix": "ram",
-            "style": "kebab-case"
+            "argsIgnorePattern": "^_",
+            "varsIgnorePattern": "^_",
+            "caughtErrorsIgnorePattern": "^_"
           }
-        ]
+        ],
+        "@typescript-eslint/consistent-type-definitions": "error",
+        "@typescript-eslint/dot-notation": "off",
+        "@typescript-eslint/explicit-member-accessibility": [
+          "off",
+          {
+            "accessibility": "explicit"
+          }
+        ],
+        "@typescript-eslint/no-inferrable-types": "off",
+        "@typescript-eslint/naming-convention": "off",
+        "brace-style": [
+          "error",
+          "1tbs"
+        ],
+        "@typescript-eslint/explicit-function-return-type": ["error", {
+          "allowExpressions": true
+        }],
+        "@typescript-eslint/lines-between-class-members": "off",
+        "@typescript-eslint/comma-dangle": "off",
+        "@typescript-eslint/func-call-spacing":  "off",
+        "id-blacklist": "off",
+        "id-match": "off",
+        "no-underscore-dangle": "off",
+        "no-shadow": "off",
+        "no-multiple-empty-lines": ["error", {
+          "max": 1
+        }]
       }
     },
     {
       "files": ["*.html"],
-      "extends": ["plugin:@nrwl/nx/angular-template"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
       "rules": {}
+    },
+    {
+      "files": ["*.html"],
+      "excludedFiles": ["*inline-template-*.component.html"],
+      "extends": ["plugin:prettier/recommended"],
+      "rules": {
+        "prettier/prettier": ["error", {
+          "parser": "angular",
+          "endOfLine": "auto",
+          "tabWidth": 2,
+          "bracketSameLine": true,
+          "printWidth": 100,
+          "singleQuote": true
+        }]
+      }
     }
   ]
 }

@@ -4,71 +4,71 @@
 @use 'node_modules/animatewithsass/animate';
 
 .card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    width: 100%;
-    height: 300px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 10px;
-    overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  overflow: hidden;
 
-    &:hover {
-        @include animate.pulse($duration: 0.3s, $function: ease);
-        @include mixins.box-shadow(.2);
-    }
+  &:hover {
+    @include animate.pulse($duration: 0.3s, $function: ease);
+    @include mixins.box-shadow(.2);
+  }
 }
 
 .card-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 1rem;
-    background: functions.get-shadow(.7);
-    color: map-get(variables.$colors, main-bright);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: functions.get-shadow(.7);
+  color: map-get(variables.$colors, main-bright);
 
-    .top-row {
-        display: flex;
-        justify-content: space-between;
+  .top-row {
+    display: flex;
+    justify-content: space-between;
 
-        .title {
-            margin: 0 0 1rem;
-            font-size: map-get(variables.$font-sizes, xx-large);
-            font-weight: map-get(variables.$font-weights, bold)
-        }
-
-        .buttons {
-            display: inline-flex;
-
-            i {
-                padding: .25rem;
-                cursor: pointer;
-            }
-        }
+    .title {
+      margin: 0 0 1rem;
+      font-size: map-get(variables.$font-sizes, xx-large);
+      font-weight: map-get(variables.$font-weights, bold);
     }
 
-    .card-details {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    .buttons {
+      display: inline-flex;
+
+      i {
+        padding: .25rem;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .card-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+    background-color: map-get(variables.$colors, main-grey);
+
+    &.alive {
+      background-color: map-get(variables.$colors, pastel-success);
     }
 
-    .status-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        margin-right: 5px;
-        background-color: map-get(variables.$colors, main-grey);
-
-        &.alive {
-            background-color: map-get(variables.$colors, pastel-success);
-        }
-
-        &.dead {
-            background-color: map-get(variables.$colors, pastel-danger);
-        }
+    &.dead {
+      background-color: map-get(variables.$colors, pastel-danger);
     }
+  }
 }

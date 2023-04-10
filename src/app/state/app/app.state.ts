@@ -1,15 +1,13 @@
-import { RouterReducerState } from "@ngrx/router-store";
-import { CharactersState, initialCharactersState } from "../characters/characters.state";
+import { RouterReducerState } from '@ngrx/router-store';
+import { CharactersState, initialCharactersState } from '../characters/characters.state';
 
 export interface AppState {
-    router?: RouterReducerState;
-    characters: CharactersState;
+  router?: RouterReducerState;
+  characters: CharactersState;
 }
 
 export const initialAppState: AppState = {
-    characters: initialCharactersState
+  characters: initialCharactersState
 };
 
-export function getInitialState(): AppState {
-    return initialAppState;
-}
+export const getInitialState = (): AppState => initialAppState;

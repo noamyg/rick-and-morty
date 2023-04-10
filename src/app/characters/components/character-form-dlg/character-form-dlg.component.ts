@@ -22,7 +22,7 @@ export class CharacterFormDlgComponent implements OnInit {
   ) {
     this.character = this.config.data?.character;
   }
-  
+
   ngOnInit(): void {
     this.initOptions();
     this.initForm();
@@ -30,31 +30,29 @@ export class CharacterFormDlgComponent implements OnInit {
       this.patchForm();
     }
   }
-  
+
   initOptions(): void {
     this.statusOptions = SelectOptionsFactory.createFromArray(
-      Object.values(CharacterStatus).map(st => {
-        return {
-          name: st,
-          id: st
-        }
-      }));
+      Object.values(CharacterStatus).map(st => ({
+        name: st,
+        id: st
+      })));
   }
-  
+
   initForm(): void {
     this.formGroup = this.formBuilder.group<Partial<Character>>({
       image: '',
       name: '',
       species: '',
       status: CharacterStatus.ALIVE
-    })
+    });
 
     /*
      * By seperating the form creation from the validation assignment,
-     * we can leverage the typed form in order to ensure that the model of the form 
+     * we can leverage the typed form in order to ensure that the model of the form
      * is identical to the model of the requst
      */
-    
+
     Object.keys(this.formGroup.controls).forEach(key => {
       this.formGroup.get(key)?.setValidators(Validators.required);
     });

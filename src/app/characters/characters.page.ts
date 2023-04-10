@@ -20,7 +20,7 @@ import { DialogUtil } from '../shared/utils/dialog.util';
 })
 export class CharactersPage {
   characters$: Observable<Character[] | undefined> = this.store.pipe(select(selectCharacters), skipInitial());
-  
+
   constructor(
     private dlgService: DialogService,
     private store: Store<AppState>
@@ -34,5 +34,5 @@ export class CharactersPage {
       this.store.dispatch(new AddCharacter(data));
     });
   }
-  
+
 }

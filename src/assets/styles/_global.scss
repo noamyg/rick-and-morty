@@ -3,10 +3,9 @@
 @use 'variables';
 @use 'mixins';
 
-
 @font-face {
   font-family: Montserrat;
-  src: url(../fonts/Montserrat-Bold.ttf) format("truetype");
+  src: url(../fonts/Montserrat-Bold.ttf) format('truetype');
 }
 
 body {
