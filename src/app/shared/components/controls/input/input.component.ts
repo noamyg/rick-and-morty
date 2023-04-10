@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CustomValidationError } from 'src/app/shared/model/custom-validation-error';
 import { FormUtil } from 'src/app/shared/utils/form.util';
@@ -20,7 +20,7 @@ export class InputComponent implements OnInit {
   @Input() placeholder?: string = '';
   @Input() required?: boolean = false;
   @Input() disabled?: boolean = false;
-  @Input() control!: UntypedFormControl;
+  @Input() control!: FormControl;
   @Input() autocomplete?: string;
   @Input() customValidationErrors!: CustomValidationError[];
   @Output() valueChange: EventEmitter<any> = new EventEmitter();

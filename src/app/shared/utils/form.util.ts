@@ -1,4 +1,4 @@
-import { AbstractControl, UntypedFormControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
 import { CustomValidationError, ValidationErrorMessage } from '../model/custom-validation-error';
 import { uniq } from 'lodash';
 
@@ -6,7 +6,7 @@ export class FormUtil {
   static Pattern = {
   };
 
-  static isControlRequired(control: UntypedFormControl): boolean {
+  static isControlRequired(control: FormControl): boolean {
     if (control?.validator) {
       const validator = control.validator({} as AbstractControl);
       if (validator?.['required']) {
@@ -16,11 +16,11 @@ export class FormUtil {
     return false;
   }
 
-  static isControlDisabled(control: UntypedFormControl): boolean {
+  static isControlDisabled(control: FormControl): boolean {
     return control?.disabled;
   }
 
-  static getControlErrors(control: UntypedFormControl, customValidationErrors: CustomValidationError[]): string | undefined {
+  static getControlErrors(control: FormControl, customValidationErrors: CustomValidationError[]): string | undefined {
     let errorMessage = '';
     if (control.errors) {
       if (customValidationErrors) {

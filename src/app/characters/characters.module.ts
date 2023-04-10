@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CharactersPage } from './characters.page';
+import { RouterModule } from '@angular/router';
+import { characterRoutes } from './characters.routes';
 
 @NgModule({
-  declarations: [],
+  declarations: [CharactersPage],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    RouterModule.forChild(characterRoutes),
+  ],
 })
-export class CharactersModule { }
+export class CharactersModule {}

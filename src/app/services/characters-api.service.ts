@@ -1,7 +1,7 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Character, PaginatedResult } from '../characters/model/character.model';
-import { map, lastValueFrom, Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 export const CHARACTERS_API_BASE_URL = new InjectionToken<string>('CHARACTERS_API_BASE_URL');
 

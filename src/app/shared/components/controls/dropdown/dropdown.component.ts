@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Dropdown } from 'primeng/dropdown';
 import { CustomValidationError } from 'src/app/shared/model/custom-validation-error';
@@ -17,7 +17,7 @@ export class DropdownComponent implements OnInit, AfterViewInit {
   @Input() id: string = uuidv4();
   @Input() label?: string;
   @Input() required?: boolean = false;
-  @Input() control!: UntypedFormControl;
+  @Input() control!: FormControl;
   @Input() showClear?: boolean = true;
   @Input() disabled?: boolean;
   @Input() customValidationErrors!: CustomValidationError[];

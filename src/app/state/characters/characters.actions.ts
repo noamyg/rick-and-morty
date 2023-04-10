@@ -4,6 +4,7 @@ import { Character } from "src/app/characters/model/character.model";
 export enum ECharactersActions {
     GetCharacters = '[Characters] Get Characters',
     GetCharactersSuccess = '[Characters] Get Characters Success',
+    GetCharactersFailure = '[Characters] Get Characters Failure',
     AddCharacter = '[Characters] Update Character',
     AddCharacterSuccess = '[Characters] Update Character Success',
     UpdateCharacter = '[Characters] Update Character',
@@ -21,6 +22,11 @@ export class GetCharacters implements Action {
 export class GetCharactersSuccess implements Action {
     public readonly type = ECharactersActions.GetCharactersSuccess;
     constructor(public payload: Character[]){}
+}
+
+export class GetCharactersFailure implements Action {
+    public readonly type = ECharactersActions.GetCharactersFailure;
+    constructor(public payload: string) {}
 }
 
 export class AddCharacter implements Action {
@@ -64,7 +70,7 @@ export class RemoveFromFavorites implements Action {
 }
 
 export type CharactersActions = 
-    GetCharacters | GetCharactersSuccess |
+    GetCharacters | GetCharactersSuccess | GetCharactersFailure |
     AddCharacter | AddCharacterSuccess |
     UpdateCharacterSuccess | UpdateCharacterSuccess |
     DeleteCharacterSuccess | DeleteCharacterSuccess |

@@ -1,21 +1,20 @@
-import { state } from "@angular/animations";
 import { createSelector } from "@ngrx/store";
 import { AppState } from "../app/app.state";
 import { CharactersState } from "./characters.state";
 
-const selectCharacters = (state: AppState) => state.charts
+const charactersSelect = (state: AppState) => state.characters
 
-export const selectChartsCategories = createSelector(
-    selectCharacters,
-    (state: CharactersState) => state.chartsCategories
+export const selectCharacters = createSelector(
+    charactersSelect,
+    (state: CharactersState) => state.characters
 )
 
-export const selectSelectedChartsCategory = createSelector(
-    selectCharacters,
-    (state: CharactersState) => state.selectedChartsCategory
+export const selectCharactersCallState = createSelector(
+    charactersSelect,
+    (state: CharactersState) => state.charactersCallState
 )
 
-export const selectFavoriteCharts = createSelector(
-    selectCharacters,
-    (state: CharactersState) => state.favoriteCharts
+export const selectFavoriteCharacters = createSelector(
+    charactersSelect,
+    (state: CharactersState) => state.favoriteCharacters
 )

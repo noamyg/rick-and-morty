@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import {  ofType, Actions, createEffect } from "@ngrx/effects"
-import { map, switchMap } from "rxjs/operators"
+import { concatMap, delay, map, switchMap } from "rxjs/operators"
 import { of } from "rxjs";
 import { CharactersApiService } from "src/app/services/characters-api.service";
 import { GetCharacters, GetCharactersSuccess, UpdateCharacter, AddCharacter, AddCharacterSuccess, DeleteCharacter, ECharactersActions, UpdateCharacterSuccess, DeleteCharacterSuccess } from "./characters.actions";
@@ -10,6 +10,7 @@ import { Character } from "src/app/characters/model/character.model";
 export class CharactersEffects {
     getCharacters$ = createEffect(() => this.actions.pipe(
         ofType<GetCharacters>(ECharactersActions.GetCharacters),
+        concatMap(() => of('dummy loader').pipe(delay(1500))),
         switchMap(() => {
             return this.charactersService.getCharacters();
         }),
