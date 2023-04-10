@@ -7,7 +7,8 @@ import * as fromCharacters from './characters.actions';
 import { Character } from 'src/app/characters/model/character.model';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../app/app.state';
-import { selectCharacters } from './characters.selector';
+import { selectCharacters, selectFavoriteCharacters } from './characters.selector';
+import { LocalStorageKeys } from 'src/app/shared/utils/storage.util';
 
 @Injectable()
 export class CharactersEffects {
@@ -55,6 +56,42 @@ export class CharactersEffects {
       id
     ),
     map((id: number) => new fromCharacters.DeleteCharacterSuccess(id))
+  ));
+
+  addToFavorites$ = createEffect(() => this.actions.pipe(
+    ofType<fromCharacters.AddToFavorites>(fromCharacters.ECharactersActions.AddToFavorites),
+    map(action => action.payload),
+    withLatestFrom(
+      this.store.pipe(
+        select(selectFavoriteCharacters),
+        map(characters => characters ? characters.map(c => c.id) : [])
+      )
+    ),
+    map(([character, favoriteCharacterIds]) => {
+      const updatedFavorites = [ ...favoriteCharacterIds, character.id ];
+      localStorage.setItem(LocalStorageKeys.FAVORITE_CHARACTERS, updatedFavorites.join(','));
+      return character;
+    }),
+    map((character) => new fromCharacters.AddToFavoritesSuccess(character))
+  ));
+
+  removeFromFavorites$ = createEffect(() => this.actions.pipe(
+    ofType<fromCharacters.RemoveFromFavorites>(fromCharacters.ECharactersActions.RemoveFromFavorites),
+    map(action => action.payload),
+    withLatestFrom(
+      this.store.pipe(
+        select(selectFavoriteCharacters),
+        map(characters => characters ? characters.map(c => c.id) : [])
+      )
+    ),
+    map(([character, favoriteCharacterIds]) => {
+      const ind = favoriteCharacterIds.findIndex(id => id === character.id);
+      const updatedFavorites = [ ...favoriteCharacterIds ];
+      updatedFavorites.splice(ind, 1);
+      localStorage.setItem(LocalStorageKeys.FAVORITE_CHARACTERS, updatedFavorites.join(','));
+      return character;
+    }),
+    map((character) => new fromCharacters.RemoveFromFavoritesSuccess(character))
   ));
 
   constructor(

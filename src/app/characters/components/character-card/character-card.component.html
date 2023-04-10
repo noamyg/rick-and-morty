@@ -1,4 +1,11 @@
 <div class="card" [style.background-image]="'url(' + character.image + ')'">
+  <div class="favorite-button-container ml-auto">
+    <i
+      class="pi clickable"
+      [class.pi-star-fill]="isFavorite"
+      [class.pi-star]="!isFavorite"
+      (click)="toggleFavorite()"></i>
+  </div>
   <div class="card-overlay">
     <div class="top-row">
       <span class="title">{{ character.name }}</span>

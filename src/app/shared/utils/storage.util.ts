@@ -1,3 +1,3 @@
 export enum LocalStorageKeys {
-  USER_LOCALE = 'UserLocale'
+  FAVORITE_CHARACTERS = 'FavoriteCharacters'
 }

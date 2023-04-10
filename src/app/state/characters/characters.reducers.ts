@@ -48,14 +48,14 @@ export function charactersReducers(state = initialCharactersState, action: Chara
         ...state,
         characters: stateCharacters
       };
-    case ECharactersActions.AddToFavorites:
+    case ECharactersActions.AddToFavoritesSuccess:
       stateFavoriteCharacters = cloneDeep(state.favoriteCharacters) || [];
       stateFavoriteCharacters.push(action.payload);
       return {
         ...state,
         favoriteCharacters: stateFavoriteCharacters
       };
-    case ECharactersActions.RemoveFromFavorites:
+    case ECharactersActions.RemoveFromFavoritesSuccess:
       stateFavoriteCharacters = cloneDeep(state.favoriteCharacters) || [];
       var ind = stateFavoriteCharacters.findIndex(fc => fc.id === action.payload.id);
       if (ind > -1) {

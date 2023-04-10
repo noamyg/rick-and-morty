@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Character, CharacterStatus } from '../../model/character.model';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/state/app/app.state';
-import { DeleteCharacter, UpdateCharacter } from 'src/app/state/characters/characters.actions';
+import { AddToFavorites, DeleteCharacter, RemoveFromFavorites, UpdateCharacter } from 'src/app/state/characters/characters.actions';
 import { DialogService } from 'primeng/dynamicdialog';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confrim-dialog/confirm-dialog.component';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
@@ -19,6 +19,7 @@ import { DialogUtil } from 'src/app/shared/utils/dialog.util';
 })
 export class CharacterCardComponent {
   @Input() character!: Character;
+  @Input() isFavorite?: boolean;
   CharacterStatus = CharacterStatus;
 
   constructor(
@@ -47,6 +48,14 @@ export class CharacterCardComponent {
     dialog.onClose.pipe(skipWhile(data => !data), untilDestroyed(this)).subscribe(async (data: Character) => {
       this.store.dispatch(new UpdateCharacter(data));
     });
+  }
+
+  toggleFavorite(): void {
+    if (this.isFavorite) {
+      this.store.dispatch(new RemoveFromFavorites(this.character));
+    } else {
+      this.store.dispatch(new AddToFavorites(this.character));
+    }
   }
 
 }

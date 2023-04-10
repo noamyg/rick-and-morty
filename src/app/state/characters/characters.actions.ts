@@ -13,7 +13,9 @@ export enum ECharactersActions {
   DeleteCharacter = '[Characters] Delete Character',
   DeleteCharacterSuccess = '[Characters] Delete Character Success',
   AddToFavorites = '[Characters] Add To Favorites',
+  AddToFavoritesSuccess = '[Characters] Add To Favorites Success',
   RemoveFromFavorites = '[Characters] Remove From Favorites',
+  RemoveFromFavoritesSuccess = '[Characters] Remove From Favorites Success',
 }
 
 export class GetCharacters implements Action {
@@ -65,8 +67,18 @@ export class AddToFavorites implements Action {
   constructor(public payload: Character) {}
 }
 
+export class AddToFavoritesSuccess implements Action {
+  public readonly type = ECharactersActions.AddToFavoritesSuccess;
+  constructor(public payload: Character) {}
+}
+
 export class RemoveFromFavorites implements Action {
   public readonly type = ECharactersActions.RemoveFromFavorites;
+  constructor(public payload: Character) {}
+}
+
+export class RemoveFromFavoritesSuccess implements Action {
+  public readonly type = ECharactersActions.RemoveFromFavoritesSuccess;
   constructor(public payload: Character) {}
 }
 
@@ -75,4 +87,5 @@ export type CharactersActions =
     AddCharacter | AddCharacterSuccess |
     UpdateCharacterSuccess | UpdateCharacterSuccess |
     DeleteCharacterSuccess | DeleteCharacterSuccess |
-    AddToFavorites | RemoveFromFavorites;
+    AddToFavorites | AddToFavoritesSuccess |
+    RemoveFromFavorites | RemoveFromFavoritesSuccess;

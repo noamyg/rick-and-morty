@@ -1,6 +1,8 @@
 <div class="cards-wrapper">
   <div class="card" *ngFor="let character of characters$ | async">
-    <ram-character-card [character]="character"></ram-character-card>
+    <ram-character-card
+      [character]="character"
+      [isFavorite]="!!(favoriteCharacterIds$ | async)?.includes(character.id)"></ram-character-card>
   </div>
 </div>
 <div class="floating-buttons-wrapper">

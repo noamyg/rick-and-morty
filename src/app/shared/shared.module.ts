@@ -17,13 +17,15 @@ import { ButtonModule } from 'primeng/button';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { ConfirmDialogComponent } from './components/confrim-dialog/confirm-dialog.component';
+import { PluckPipe } from './pipes/pluck,pipe';
 
 const declarations = [
   DropdownComponent,
   InputComponent,
   IndicationTextComponent,
   LoaderComponent,
-  ConfirmDialogComponent
+  ConfirmDialogComponent,
+  PluckPipe
 ];
 
 const imports = [
