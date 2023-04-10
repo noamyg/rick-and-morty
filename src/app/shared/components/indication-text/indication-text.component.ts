@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'ram-indication-text',
   templateUrl: './indication-text.component.html',
-  styleUrls: ['./indication-text.component.scss']
+  styleUrls: ['./indication-text.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IndicationTextComponent {
   @Input() indication: 'success' | 'warning' | 'danger' | 'info' = 'info';

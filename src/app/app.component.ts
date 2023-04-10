@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AppState } from './state/app/app.state';
 import { GetCharacters } from './state/characters/characters.actions';
@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
   selector: 'ram-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   ProcessState = ProcessState;

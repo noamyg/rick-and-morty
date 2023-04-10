@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SelectOption, SelectOptionsFactory } from 'src/app/shared/model/select-option.model';
 import { Character, CharacterStatus } from '../../model/character.model';
@@ -8,6 +8,7 @@ import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
   selector: 'ram-character-form-dlg',
   templateUrl: './character-form-dlg.component.html',
   styleUrls: ['./character-form-dlg.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CharacterFormDlgComponent implements OnInit {
   formGroup!: FormGroup;

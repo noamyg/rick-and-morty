@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { AppState } from '../state/app/app.state';
 import { Store, select } from '@ngrx/store';
 import { Observable, skipWhile } from 'rxjs';
@@ -16,6 +16,7 @@ import { DialogUtil } from '../shared/utils/dialog.util';
   selector: 'ram-characters',
   templateUrl: './characters.page.html',
   styleUrls: ['./characters.page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CharactersPage {
   characters$: Observable<Character[] | undefined> = this.store.pipe(select(selectCharacters), skipInitial());

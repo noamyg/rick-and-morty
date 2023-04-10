@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Dropdown } from 'primeng/dropdown';
@@ -11,7 +11,8 @@ import { v4 as uuidv4 } from 'uuid';
 @Component({
   selector: 'ram-dropdown',
   templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.scss']
+  styleUrls: ['./dropdown.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownComponent implements OnInit, AfterViewInit {
   @Input() id: string = uuidv4();

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CustomValidationError } from 'src/app/shared/model/custom-validation-error';
@@ -9,7 +9,8 @@ import { v4 as uuidv4 } from 'uuid';
 @Component({
   selector: 'ram-input',
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss']
+  styleUrls: ['./input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputComponent implements OnInit {
   @Input() id: string = uuidv4();

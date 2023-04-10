@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Character, CharacterStatus } from '../../model/character.model';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/state/app/app.state';
@@ -15,6 +15,7 @@ import { DialogUtil } from 'src/app/shared/utils/dialog.util';
   selector: 'ram-character-card',
   templateUrl: './character-card.component.html',
   styleUrls: ['./character-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CharacterCardComponent {
   CharacterStatus = CharacterStatus;
