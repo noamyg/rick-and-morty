@@ -1,0 +1,44 @@
+/* stylelint-disable color-no-hex */
+$header-height: 100px;
+$breakpoint-medium: 768px;
+$colors: (
+  main-bright: #f0f0f0,
+  main-dark: #000000,
+  main-brand: #65ff00,
+  x-bright: #ffffff,
+  dark-grey: #6f8599,
+  x-dark-grey: #7c7c7c,
+  medium-grey: #d2d2d2,
+  light-grey: #f4f4f4,
+  main-grey: #d9d9d9,
+  x-light-grey: #f9f9f9,
+  danger: #f43e37,
+  pastel-danger: #f49097,
+  success: #28a745,
+  pastel-success: #55d6c2,
+  warning: #f0a20e,
+  pastel-warning: #f5e960,
+  info: #626262
+);
+$font-sizes: (
+  huge: 96px,
+  main-title: 48px,
+  xx-large: 24px,
+  x-large: 20px,
+  large: 18px,
+  default: 16px,
+  small: 14px,
+  x-small: 12px,
+  xx-small: 10px
+);
+$font-weights: (
+  hairline: 100,
+  thin: 200,
+  light: 300,
+  normal: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+  xbold: 800,
+  black: 900
+);

@@ -1,0 +1,51 @@
+@charset 'UTF-8';
+@use 'variables';
+@use 'mixins';
+
+@font-face {
+  font-family: Montserrat;
+  src: url(../fonts/Montserrat-Bold.ttf) format('truetype');
+}
+
+body {
+  color: map-get(variables.$colors, main-dark);
+  background-color: map-get(variables.$colors, main-dark);
+  font-family: Montserrat, sans-serif !important;
+  margin: 0;
+}
+
+.with-required-indicator {
+  &:after {
+    content: ' *';
+    color: map-get(variables.$colors , danger);
+  }
+}
+
+@media (max-width: variables.$breakpoint-medium) {
+  .width-md-100 {
+    width: 100% !important;
+  }
+
+  .width-md-75 {
+    width: 75% !important;
+  }
+
+  .width-md-50 {
+    width: 50% !important;
+  }
+
+  .width-md-25 {
+    width: 25% !important;
+  }
+}
+
+.clickable {
+  @include mixins.clickable;
+}
+
+@include mixins.text-emphasis-variant('.text-muted', map-get(variables.$colors , medium-grey));
+@include mixins.text-emphasis-variant('.text-primary', map-get(variables.$colors , main-brand));
+@include mixins.text-emphasis-variant('.text-success', map-get(variables.$colors , success));
+@include mixins.text-emphasis-variant('.text-info', map-get(variables.$colors , info));
+@include mixins.text-emphasis-variant('.text-warning', map-get(variables.$colors , warning));
+@include mixins.text-emphasis-variant('.text-danger', map-get(variables.$colors , danger));

@@ -1,0 +1,53 @@
+@use 'variables';
+@use 'mixins';
+@use 'global';
+
+.p-component,
+.p-element {
+  font-family: Montserrat, sans-serif !important;
+}
+
+p-dropdown {
+  .p-dropdown {
+    .p-dropdown-label {
+      width: 0 !important;
+    }
+  }
+}
+
+p-dynamicdialog {
+  .p-dialog-header-icon {
+    &:enabled,
+    &:hover {
+      background: none !important;
+    }
+  }
+}
+
+p-dialog,
+p-dynamicdialog {
+  @media (max-width: variables.$breakpoint-medium) {
+    .p-dialog {
+      max-height: 100%;
+      width: 100% !important;
+
+      .p-dialog-title {
+        margin-top: variables.$header-height;
+      }
+
+      .p-dialog-content {
+        height: 100vh;
+      }
+    }
+  }
+}
+
+p-dropdownitem {
+  .p-dropdown-item {
+    white-space: normal;
+
+    span {
+      @include mixins.nowrap($with_ellipsis: true);
+    }
+  }
+}

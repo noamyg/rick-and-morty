@@ -1,0 +1,7 @@
+@function get-shadow($opacity) {
+  @return rgba(0, 0, 0, $opacity);
+}
+
+@function get-opac-color($color, $opacity) {
+  @return rgba($color, $opacity);
+}
