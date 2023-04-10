@@ -9,6 +9,7 @@ import { CharacterFormDlgComponent } from './components/character-form-dlg/chara
 import { DialogService } from 'primeng/dynamicdialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { AddCharacter } from '../state/characters/characters.actions';
+import { DialogUtil } from '../shared/utils/dialog.util';
 
 @UntilDestroy()
 @Component({
@@ -26,6 +27,7 @@ export class CharactersPage {
 
   openCharacterFormDialog(): void {
     const dialog = this.dlgService.open(CharacterFormDlgComponent, {
+      ...DialogUtil.DEFAULT_OPTIONS
     });
     dialog.onClose.pipe(skipWhile(data => !data), untilDestroyed(this)).subscribe(async (data: Character) => {
       this.store.dispatch(new AddCharacter(data));

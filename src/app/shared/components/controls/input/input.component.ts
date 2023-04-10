@@ -18,7 +18,6 @@ export class InputComponent implements OnInit {
   @Input() labelIconTooltip?: string;
   @Input() type?: string = 'text';
   @Input() placeholder?: string = '';
-  @Input() required?: boolean = false;
   @Input() disabled?: boolean = false;
   @Input() control!: FormControl;
   @Input() autocomplete?: string;

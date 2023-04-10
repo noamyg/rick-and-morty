@@ -3,7 +3,7 @@
     *ngIf="label"
     class="control-label"
     [for]="id"
-    [class.with-required-indicator]="required || FormUtil.isControlRequired(control)">
+    [class.with-required-indicator]="FormUtil.isControlRequired(control)">
     {{ label}}
   </label>
 </div>
@@ -11,7 +11,7 @@
   #dropdown
   [options]="options"
   [attr.disabled]="disabled || !_options.length"
-  [required]="required || FormUtil.isControlRequired(control)"
+  [required]="FormUtil.isControlRequired(control)"
   [attr.id]="id"
   [virtualScrollItemSize]="options.length"
   appendTo="body"

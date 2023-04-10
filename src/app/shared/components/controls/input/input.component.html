@@ -3,7 +3,7 @@
     *ngIf="label"
     class="control-label"
     [for]="id"
-    [class.with-required-indicator]="required || FormUtil.isControlRequired(control)">
+    [class.with-required-indicator]="FormUtil.isControlRequired(control)">
     {{ label}}
   </label>
   <span class="label-icon" *ngIf="labelIcon" (click)="labelIconClick.emit()">

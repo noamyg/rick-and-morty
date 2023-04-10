@@ -8,6 +8,7 @@ import { ConfirmDialogComponent } from 'src/app/shared/components/confrim-dialog
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { skipWhile } from 'rxjs';
 import { CharacterFormDlgComponent } from '../character-form-dlg/character-form-dlg.component';
+import { DialogUtil } from 'src/app/shared/utils/dialog.util';
 
 @UntilDestroy()
 @Component({
@@ -37,7 +38,7 @@ export class CharacterCardComponent {
 
   openCharacterDialog(): void {
     const dialog = this.dlgService.open(CharacterFormDlgComponent, {
-      width: "50vw",
+      ...DialogUtil.DEFAULT_OPTIONS,
       data: {
         character: this.character
       }

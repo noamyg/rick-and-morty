@@ -17,8 +17,8 @@ div {
     color: map-get(variables.$colors, info) !important;
   }
 
-  .icon {
+  i {
     height: 1rem;
-    padding-left: 0.25rem;
+    padding-right: .25rem;
   }
 }

@@ -16,7 +16,6 @@ import { v4 as uuidv4 } from 'uuid';
 export class DropdownComponent implements OnInit, AfterViewInit {
   @Input() id: string = uuidv4();
   @Input() label?: string;
-  @Input() required?: boolean = false;
   @Input() control!: FormControl;
   @Input() showClear?: boolean = true;
   @Input() disabled?: boolean;

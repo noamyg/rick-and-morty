@@ -17,13 +17,13 @@ export class IndicationTextComponent {
     }
     switch (this.indication) {
       case 'success':
-        return 'check-circle';
+        return 'pi pi-check-circle';
       case 'warning':
-        return 'arrow-circle-left';
+        return 'pi pi-info-circle';
       case 'danger':
-        return 'close-circle';
+        return 'pi pi-times-circle';
       default:
-        return 'info-circle';
+        return 'pi pi-info-circle';
     }
   }
 }
