@@ -120,6 +120,7 @@
 @mixin nowrap($with_ellipsis: false) {
   white-space: nowrap;
   overflow: hidden;
+  
   @if $with_ellipsis {
     text-overflow: ellipsis;
   }

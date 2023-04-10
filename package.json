@@ -6,7 +6,8 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "lint": "npx stylelint **/*.scss && nx lint"
+    "lint": "npx stylelint **/*.scss && nx lint",
+    "deploy": "nx deploy --base-href=https://noamyg.github.io/rick-and-morty/"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +26,7 @@
     "@ngrx/store-devtools": "^15.4.0",
     "@nrwl/angular": "15.9.2",
     "@types/uuid": "^9.0.1",
+    "angular-cli-ghpages": "^1.0.5",
     "animatewithsass": "^3.2.1",
     "lodash": "^4.17.21",
     "primeflex": "^3.3.0",
