@@ -31,6 +31,10 @@ p-dynamicdialog {
       max-height: 100%;
       width: 100% !important;
 
+      .p-dialog-header {
+        padding: 0 .5rem;
+      }
+
       .p-dialog-title {
         margin-top: variables.$header-height;
       }
