@@ -13,7 +13,7 @@ export interface PaginationInfo {
 export interface Character {
     id: number;
     name: string;
-    status: string;
+    status: CharacterStatus;
     species: string;
     type: string;
     gender: string;
@@ -23,6 +23,11 @@ export interface Character {
     episode: string[];
     url: string;
     created: Date;
+}
+
+export enum CharacterStatus {
+    ALIVE = 'Alive',
+    DEAD = 'Dead'
 }
 
 export interface CharacterOrigin {

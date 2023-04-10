@@ -1,1 +1,8 @@
-<p>characters works!</p>
+<div class="cards-wrapper">
+    <div class="card" *ngFor="let character of characters$ | async">
+        <ram-character-card  [character]="character"></ram-character-card>
+    </div>
+</div>
+<div class="floating-buttons-wrapper">
+    <p-button icon="pi pi-plus" styleClass="p-button-rounded p-button-success"></p-button>
+</div>

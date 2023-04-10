@@ -25,19 +25,7 @@
 
     img {
       @include animate.pulse($count: infinite);
-    }
-
-    .error {
-      text-align: center;
-      font-size: map-get(variables.$font-sizes, large);
-      color: map-get(variables.$colors, pastel-danger);
-    }
-
-    .buttons-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1.5rem;
+      max-width: 300px;
     }
   }
 

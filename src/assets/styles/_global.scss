@@ -9,11 +9,6 @@
   src: url(../fonts/RustyHooksRegular-nROER.ttf)  format('ttf');
 }
 
-// html {
-//   font-family: OpenSansHebrew, sans-serif;;
-//   font-size: map-get(variables.$font-sizes , default);
-// }
-
 body {
   color: map-get(variables.$colors, main-dark);
   background-color: map-get(variables.$colors, main-bright);

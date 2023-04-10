@@ -1,0 +1,18 @@
+<div class="card" [style.background-image]="'url(' + character.image + ')'">
+    <div class="card-overlay">
+        <div class="top-row">
+            <span class="title">{{ character.name }}</span>
+            <div class="buttons">
+                <i class="pi pi-trash" (click)="deleteCharacter()"></i>
+                <i class="pi pi-pencil" (click)="openCharacterDialog()"></i>
+            </div>
+        </div>
+        <div class="card-details">
+            <p>{{ character.species }}</p>
+            <div class="ml-auto status-dot"
+                [ngClass]="{'alive': character.status === CharacterStatus.ALIVE, 'dead': character.status === CharacterStatus.DEAD}">
+            </div>
+            <p>{{ character.status }}</p>
+        </div>
+    </div>
+</div>

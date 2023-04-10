@@ -13,6 +13,7 @@ import { environment } from 'src/assets/environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CHARACTERS_API_BASE_URL, CharactersApiService } from './services/characters-api.service';
 import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SharedModule } from './shared/shared.module';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     SharedModule,
     HeaderModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
