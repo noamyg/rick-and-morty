@@ -1,7 +1,11 @@
+@use 'node_modules/animatewithsass/animate';
+
 .cards-wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+
+  @include animate.fadeIn;
     
   .card {
     flex: 1;
