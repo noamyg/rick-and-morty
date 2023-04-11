@@ -14,15 +14,13 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { RippleModule } from 'primeng/ripple';
 import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogComponent } from './components/confrim-dialog/confirm-dialog.component';
-import { PluckPipe } from './pipes/pluck,pipe';
 
 const declarations = [
   DropdownComponent,
   InputComponent,
   IndicationTextComponent,
   LoaderComponent,
-  ConfirmDialogComponent,
-  PluckPipe
+  ConfirmDialogComponent
 ];
 
 const imports = [
