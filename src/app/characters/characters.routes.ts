@@ -4,7 +4,6 @@ import { CharactersPage } from 'src/app/characters/characters.page';
 export const characterRoutes: Route[] = [
   {
     path: '',
-    component: CharactersPage,
-    canDeactivate: [() => false]
+    component: CharactersPage
   }
 ];
