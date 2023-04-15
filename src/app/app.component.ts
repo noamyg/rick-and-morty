@@ -3,7 +3,7 @@ import { Store, select } from '@ngrx/store';
 import { AppState } from './state/app/app.state';
 import { GetCharacters } from './state/characters/characters.actions';
 import { Observable, tap } from 'rxjs';
-import { CallState, ProcessState } from './state/state.model';
+import { CallState, ProcessState, getCallStateError } from './state/state.model';
 import { selectCharactersCallState } from './state/characters/characters.selector';
 import { Router } from '@angular/router';
 
@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   ProcessState = ProcessState;
+  getCallStateError = getCallStateError;
   charactersCallState$?: Observable<CallState>;
 
   constructor(

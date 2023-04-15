@@ -5,9 +5,13 @@
   margin-top: variables.$header-height;
   height: calc(100vh - #{variables.$header-height});
 
-  .router-outlet {
+  > * {    
     flex: 1;
     padding: 3rem;
     overflow-y: auto;
+  }
+
+  .error {
+    color: map-get(variables.$colors, main-bright);;
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {  ofType, Actions, createEffect } from '@ngrx/effects';
-import { concatMap, delay, map, switchMap } from 'rxjs/operators';
+import { concatMap, delay, map, catchError, switchMap } from 'rxjs/operators';
 import { of, withLatestFrom } from 'rxjs';
 import { CharactersApiService } from 'src/app/services/characters-api.service';
 import * as fromCharacters from './characters.actions';
@@ -10,20 +10,23 @@ import { AppState } from '../app/app.state';
 import { selectCharacters, selectFavoriteCharacterIds } from './characters.selector';
 import { LocalStorageKeys } from 'src/app/shared/utils/storage.util';
 import { cloneDeep } from 'lodash';
+import { GetCharactersFailure } from './characters.actions';
 
 @Injectable()
 export class CharactersEffects {
   getCharacters$ = createEffect(() => this.actions.pipe(
     ofType<fromCharacters.GetCharacters>(fromCharacters.ECharactersActions.GetCharacters),
     concatMap(() => of('dummy loader').pipe(delay(2000))),
-    switchMap(() => this.charactersService.getCharacters()),
-    map((data: Character[]) => new fromCharacters.GetCharactersSuccess(data))
+    switchMap(() => this.charactersService.getCharacters().pipe(
+      map(data => new fromCharacters.GetCharactersSuccess(data)),
+      catchError(error => of(new GetCharactersFailure(error?.message ?? 'error'))),
+    ))
   ));
 
   updateCharacter$ = createEffect(() => this.actions.pipe(
     ofType<fromCharacters.UpdateCharacter>(fromCharacters.ECharactersActions.UpdateCharacter),
     map(action => action.payload),
-    switchMap(async (character) =>
+    map(character =>
     // There would be an API call here
       character
     ),
@@ -33,7 +36,7 @@ export class CharactersEffects {
   addCharacter$ = createEffect(() => this.actions.pipe(
     ofType<fromCharacters.AddCharacter>(fromCharacters.ECharactersActions.AddCharacter),
     map(action => action.payload),
-    switchMap(async (character) =>
+    map(character =>
     // There would be an API call here. Instead - an ID will be generated based on the max current id
       character
     ),
@@ -52,7 +55,7 @@ export class CharactersEffects {
   deleteCharacter$ = createEffect(() => this.actions.pipe(
     ofType<fromCharacters.DeleteCharacter>(fromCharacters.ECharactersActions.DeleteCharacter),
     map(action => action.payload),
-    switchMap(async (id) =>
+    map(id =>
     // There would be an API call here
       id
     ),
