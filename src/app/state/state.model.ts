@@ -11,8 +11,8 @@ export interface ErrorState {
 
 export type CallState = ProcessState | ErrorState;
 
-export const getError = (callState: CallState): string | void => {
-  if ((callState as ErrorState).errorMsg !== undefined) {
+export const getCallStateError = (callState: CallState): string | void => {
+  if ((callState as ErrorState)?.errorMsg !== undefined) {
     return (callState as ErrorState).errorMsg;
   }
 };
