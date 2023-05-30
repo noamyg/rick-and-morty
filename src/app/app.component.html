@@ -1,19 +1,18 @@
 <ram-header></ram-header>
-<ram-loader *ngIf="(charactersCallState$ | async) === ProcessState.PROCESSING; else content">
-</ram-loader>
-<ng-template #content>
-  <div class="content" role="main">
-    <div
-      *ngIf="!getCallStateError((charactersCallState$ | async)!); else error"
-      class="router-outlet">
-      <router-outlet></router-outlet>
-    </div>
-    <ng-template #error>
-      <div class="error">
-        {{ getCallStateError((charactersCallState$ | async)!) }}
-        <br />
-        <a href="javascript:void(0);" (click)="bootstrapCharacters()">Try again</a>
+<ng-container *ngIf="charactersCallState$ | async as charactersCallState">
+  <ram-loader *ngIf="charactersCallState === ProcessState.PROCESSING; else content"></ram-loader>
+  <ng-template #content>
+    <div class="content" role="main">
+      <div *ngIf="!getCallStateError(charactersCallState); else error" class="router-outlet">
+        <router-outlet></router-outlet>
       </div>
-    </ng-template>
-  </div>
-</ng-template>
+      <ng-template #error>
+        <div class="error">
+          {{ getCallStateError(charactersCallState) }}
+          <br />
+          <a href="javascript:void(0);" (click)="bootstrapCharacters()">Try again</a>
+        </div>
+      </ng-template>
+    </div>
+  </ng-template>
+</ng-container>

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { AppState } from '../state/app/app.state';
 import { Store, select } from '@ngrx/store';
-import { Observable, map, skipWhile } from 'rxjs';
+import { Observable, skipWhile } from 'rxjs';
 import { Character } from './model/character.model';
 import { selectCharacters, selectFavoriteCharacterIds } from '../state/characters/characters.selector';
 import { skipInitial } from '../shared/utils/rxjs.util';
