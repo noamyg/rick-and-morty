@@ -3,6 +3,7 @@
 .cards-wrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
   
   @include animate.fadeIn;
@@ -10,6 +11,7 @@
   .card {
     flex: 1;
     min-width: 240px;
+    max-width: 500px;
   }
 }
 
