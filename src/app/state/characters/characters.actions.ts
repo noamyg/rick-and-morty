@@ -8,10 +8,13 @@ export enum ECharactersActions {
   GetCharactersFailure = '[Characters] Get Characters Failure',
   AddCharacter = '[Characters] Add Character',
   AddCharacterSuccess = '[Characters] Add Character Success',
+  AddCharacterFailure = '[Characters] Add Character Failure',
   UpdateCharacter = '[Characters] Update Character',
   UpdateCharacterSuccess = '[Characters] Update Character Success',
+  UpdateCharacterFailure = '[Characters] Update Character Failure',
   DeleteCharacter = '[Characters] Delete Character',
   DeleteCharacterSuccess = '[Characters] Delete Character Success',
+  DeleteCharacterFailure = '[Characters] Delete Character Failure',
   AddToFavorites = '[Characters] Add To Favorites',
   AddToFavoritesSuccess = '[Characters] Add To Favorites Success',
   RemoveFromFavorites = '[Characters] Remove From Favorites',
@@ -42,6 +45,11 @@ export class AddCharacterSuccess implements Action {
   constructor(public payload: Character) {}
 }
 
+export class AddCharacterFailure implements Action {
+  public readonly type = ECharactersActions.AddCharacterFailure;
+  constructor(public payload: string) {}
+}
+
 export class UpdateCharacter implements Action {
   public readonly type = ECharactersActions.UpdateCharacter;
   constructor(public payload: Character) {}
@@ -52,6 +60,11 @@ export class UpdateCharacterSuccess implements Action {
   constructor(public payload: Character) {}
 }
 
+export class UpdateCharacterFailure implements Action {
+  public readonly type = ECharactersActions.UpdateCharacterFailure;
+  constructor(public payload: string) {}
+}
+
 export class DeleteCharacter implements Action {
   public readonly type = ECharactersActions.DeleteCharacter;
   constructor(public payload: number) {}
@@ -60,6 +73,11 @@ export class DeleteCharacter implements Action {
 export class DeleteCharacterSuccess implements Action {
   public readonly type = ECharactersActions.DeleteCharacterSuccess;
   constructor(public payload: number) {}
+}
+
+export class DeleteCharacterFailure implements Action {
+  public readonly type = ECharactersActions.DeleteCharacterFailure;
+  constructor(public payload: string) {}
 }
 
 export class AddToFavorites implements Action {
