@@ -4,11 +4,11 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/state/app/app.state';
 import { AddToFavorites, DeleteCharacter, RemoveFromFavorites, UpdateCharacter } from 'src/app/state/characters/characters.actions';
 import { DialogService } from 'primeng/dynamicdialog';
-import { ConfirmDialogComponent } from 'src/app/shared/components/confrim-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '@rick-and-morty/libs/shared-ui';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { skipWhile } from 'rxjs';
 import { CharacterFormDlgComponent } from '../character-form-dlg/character-form-dlg.component';
-import { DialogUtil } from 'src/app/shared/utils/dialog.util';
+import { DialogUtil } from '@rick-and-morty/libs/utils';
 
 @UntilDestroy()
 @Component({

@@ -1,0 +1,18 @@
+@use 'variables';
+
+.body {
+  text-align: center;
+  font-size: map-get(variables.$font-sizes, large);
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  padding-top: 2.5rem;
+
+  ::ng-deep p-button {
+    button {
+      margin: 0 0.25rem;
+    }
+  }
+}

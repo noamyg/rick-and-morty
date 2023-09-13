@@ -8,7 +8,7 @@ import { Character } from 'src/app/characters/model/character.model';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../app/app.state';
 import { selectCharacters, selectFavoriteCharacterIds } from './characters.selector';
-import { LocalStorageKeys } from 'src/app/shared/utils/storage.util';
+import { LocalStorageKeys } from '@rick-and-morty/libs/utils';
 import { cloneDeep } from 'lodash';
 import { GetCharactersFailure } from './characters.actions';
 

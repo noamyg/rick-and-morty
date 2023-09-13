@@ -1,0 +1,29 @@
+<div class="label-wrapper">
+  <label
+    *ngIf="label"
+    class="control-label"
+    [for]="id"
+    [class.with-required-indicator]="FormUtil.isControlRequired(control)">
+    {{ label }}
+  </label>
+</div>
+<p-dropdown
+  #dropdown
+  [options]="options"
+  [attr.disabled]="disabled || !_options.length"
+  [required]="FormUtil.isControlRequired(control)"
+  [attr.id]="id"
+  [virtualScrollItemSize]="options.length"
+  appendTo="body"
+  [showClear]="true"
+  [formControl]="control"
+  [placeholder]="'Select an option'"
+  [style]="{ width: '100%' }"
+  optionValue="id"
+  optionLabel="name">
+</p-dropdown>
+<ram-indication-text
+  indication="danger"
+  [regular]="FormUtil.getControlErrors(control, customValidationErrors)"
+  *ngIf="control?.invalid && control?.touched">
+</ram-indication-text>

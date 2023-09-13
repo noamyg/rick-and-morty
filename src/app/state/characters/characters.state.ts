@@ -1,6 +1,6 @@
 import { Character } from 'src/app/characters/model/character.model';
 import { CallState, ProcessState } from '../state.model';
-import { LocalStorageKeys } from 'src/app/shared/utils/storage.util';
+import { LocalStorageKeys } from '@rick-and-morty/libs/utils';
 
 export interface CharactersState {
   characters?: Character[];

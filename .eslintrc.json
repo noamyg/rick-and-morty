@@ -1,29 +1,17 @@
 {
-  "root": true,
   "parserOptions": {
     "ecmaVersion": "latest"
   },
   "env": {
-      "es6": true
+    "es6": true
   },
-  "ignorePatterns": [
-    "projects/**/*"
-  ],
-  "plugins": [
-    "@typescript-eslint",
-    "@angular-eslint"
-  ],
+  "ignorePatterns": ["projects/**/*"],
+  "plugins": ["@typescript-eslint", "@angular-eslint"],
   "overrides": [
     {
-      "files": [
-        "*.ts",
-        "*.js"
-      ],
+      "files": ["*.ts", "*.js"],
       "parserOptions": {
-        "project": [
-          "tsconfig.*?.json",
-          "e2e/tsconfig.json"
-        ],
+        "project": ["tsconfig.*?.json", "e2e/tsconfig.json"],
         "createDefaultProgram": true
       },
       "extends": [
@@ -34,26 +22,23 @@
         "airbnb-typescript/base"
       ],
       "rules": {
-        "import/no-extraneous-dependencies": ["error", {
-          "devDependencies": ["**/*.test.ts", "**/*.test.tsx", "**/*.js"]
-        }],
+        "import/no-extraneous-dependencies": [
+          "error",
+          {
+            "devDependencies": ["**/*.test.ts", "**/*.test.tsx", "**/*.js"]
+          }
+        ],
         "@angular-eslint/component-class-suffix": [
           "error",
           {
-            "suffixes": [
-              "Component",
-              "Page"
-            ]
+            "suffixes": ["Component", "Page"]
           }
         ],
         "@angular-eslint/component-selector": "off",
         "@angular-eslint/directive-class-suffix": [
           "error",
           {
-            "suffixes": [
-              "Validator",
-              "Directive"
-            ]
+            "suffixes": ["Validator", "Directive"]
           }
         ],
         "@angular-eslint/use-component-view-encapsulation": "error",
@@ -75,23 +60,26 @@
         ],
         "@typescript-eslint/no-inferrable-types": "off",
         "@typescript-eslint/naming-convention": "off",
-        "brace-style": [
+        "brace-style": ["error", "1tbs"],
+        "@typescript-eslint/explicit-function-return-type": [
           "error",
-          "1tbs"
+          {
+            "allowExpressions": true
+          }
         ],
-        "@typescript-eslint/explicit-function-return-type": ["error", {
-          "allowExpressions": true
-        }],
         "@typescript-eslint/lines-between-class-members": "off",
         "@typescript-eslint/comma-dangle": "off",
-        "@typescript-eslint/func-call-spacing":  "off",
+        "@typescript-eslint/func-call-spacing": "off",
         "id-blacklist": "off",
         "id-match": "off",
         "no-underscore-dangle": "off",
         "no-shadow": "off",
-        "no-multiple-empty-lines": ["error", {
-          "max": 1
-        }]
+        "no-multiple-empty-lines": [
+          "error",
+          {
+            "max": 1
+          }
+        ]
       }
     },
     {
@@ -104,15 +92,19 @@
       "excludedFiles": ["*inline-template-*.component.html"],
       "extends": ["plugin:prettier/recommended"],
       "rules": {
-        "prettier/prettier": ["error", {
-          "parser": "angular",
-          "endOfLine": "auto",
-          "tabWidth": 2,
-          "bracketSameLine": true,
-          "printWidth": 100,
-          "singleQuote": true
-        }]
+        "prettier/prettier": [
+          "error",
+          {
+            "parser": "angular",
+            "endOfLine": "auto",
+            "tabWidth": 2,
+            "bracketSameLine": true,
+            "printWidth": 100,
+            "singleQuote": true
+          }
+        ]
       }
     }
-  ]
+  ],
+  "extends": ["./.eslintrc.base.json"]
 }

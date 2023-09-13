@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SelectOption, SelectOptionsFactory } from 'src/app/shared/model/select-option.model';
 import { Character, CharacterStatus } from '../../model/character.model';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { SelectOption, SelectOptionsFactory } from '@rick-and-morty/libs/shared-ui';
 
 @Component({
   selector: 'ram-character-form-dlg',

@@ -29,9 +29,7 @@
           "includePaths": ["src/assets/styles"]
         },
         "scripts": [],
-        "allowedCommonJsDependencies": [
-          "lodash"
-       ]
+        "allowedCommonJsDependencies": ["lodash"]
       },
       "configurations": {
         "production": {
@@ -89,7 +87,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectName}"],
       "options": {
-        "jestConfig": "jest.config.ts",
+        "jestConfig": "jest.config.app.ts",
         "passWithNoTests": true
       },
       "configurations": {

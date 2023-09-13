@@ -15,8 +15,11 @@ import {
   CHARACTERS_API_BASE_URL,
   CharactersApiService,
 } from './services/characters-api.service';
-import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoaderComponent } from '@rick-and-morty/libs/shared-ui';
+import { HttpClientModule } from '@angular/common/http';
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -24,8 +27,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    SharedModule,
     HeaderModule,
+    LoaderComponent,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     StoreModule.forRoot(appReducers),
     EffectsModule.forRoot([CharactersEffects]),
