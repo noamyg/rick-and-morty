@@ -4,7 +4,6 @@ import { concatMap, delay, map, catchError, switchMap, tap } from 'rxjs/operator
 import { of, withLatestFrom } from 'rxjs';
 import { CharactersApiService } from 'src/app/services/characters-api.service';
 import * as fromCharacters from './characters.actions';
-import { Character } from 'src/app/characters/model/character.model';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../app/app.state';
 import { selectCharacters, selectFavoriteCharacterIds } from './characters.selector';
